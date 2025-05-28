@@ -1,28 +1,45 @@
 .about {
-  padding: 5rem 0;
   background-color: #004d40;
+  color: white;
+  padding: 4rem 0;
 }
 
 .sectionTitle {
   text-align: center;
   font-size: 2.5rem;
-  color: var(--text-primary);
   margin-bottom: 2rem;
-  font-weight: 700;
+  color: white;
 }
 
 .teamGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
-  padding: 1rem;
+  justify-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 @media (max-width: 768px) {
   .teamGrid {
-    grid-template-columns: 1fr;
-    max-width: 400px;
-    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .teamGrid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.75rem;
   }
 }
 

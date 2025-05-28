@@ -1,10 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import styles from "./about.module.css";
 import { teamMembers } from "../../../data/teamData";
-import Card from "../../../components/Card/Card";
+import { SimpleMemberCard } from "../../../components/MemberCard/MemberCard";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -69,16 +68,11 @@ export function About() {
         >
           {teamMembers.map((member) => (
             <motion.div key={member.name} variants={itemVariants}>
-              <Card
+              <SimpleMemberCard
+                name={member.name}
+                role={member.role}
                 image={member.image}
-                title={member.name}
-                description={
-                  <>
-                    <strong>{member.role}</strong>
-                    <br />
-                    {member.description}
-                  </>
-                }
+                description={member.description}
               />
             </motion.div>
           ))}

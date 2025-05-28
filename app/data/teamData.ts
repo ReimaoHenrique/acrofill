@@ -21,7 +21,7 @@ export const teamMembers: TeamMember[] = [
       "Visionário que iniciou a AirTech com o objetivo de transformar ambientes industriais em espaços mais saudáveis e produtivos através da tecnologia.",
   },
   {
-    name: "Paulo Comedor de Traveco",
+    name: "Paulo Traveco",
     role: "Diretor de Vendas e Marketing",
     image: "/images/paulo.enc",
     description:
