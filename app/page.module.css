@@ -1,0 +1,1432 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 80px; /* Altura aproximada do header */
+}
+
+.page main {
+  flex: 1;
+}
+
+/* Header e Navegação */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 1rem 0;
+  transition: all 0.3s ease;
+}
+
+.header.scrolled {
+  padding: 0.5rem 0;
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo h1 {
+  color: var(--primary);
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.navLinks {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.navLinks a {
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  position: relative;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+  color: var(--primary-dark);
+}
+
+.navLinks a:hover {
+  color: var(--primary);
+  background-color: var(--primary-light);
+  transform: translateY(-2px);
+}
+
+.navLinks a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.navLinks a:hover::after {
+  width: 100%;
+}
+
+/* Removendo o estilo de seleção ativa */
+.navActive {
+  color: var(--primary-dark) !important;
+  font-weight: normal;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.navActive:hover {
+  color: var(--primary) !important;
+  background-color: var(--primary-light);
+  transform: translateY(-2px);
+}
+
+/* Removendo o underline do navActive */
+.navActive::after {
+  display: none;
+}
+
+/* Adicionando indicador de progresso do scroll */
+.scrollProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    var(--primary) var(--scroll),
+    transparent 0
+  );
+  z-index: 1001;
+}
+
+/* Hero Section */
+.hero {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, var(--gray-light) 0%, #ffffff 100%);
+}
+
+.heroContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.heroText h2 {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: var(--primary-dark);
+}
+
+.heroText p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: var(--foreground);
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 1rem;
+}
+
+.button.secondary {
+  background-color: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.button.secondary:hover {
+  background-color: var(--primary-light);
+  color: var(--text-on-primary);
+  border-color: var(--primary-light);
+}
+
+.heroImage {
+  position: relative;
+  height: 400px;
+}
+
+.heroImageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Soluções Section */
+.sectionTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--primary-dark);
+}
+
+.solutions {
+  padding: 6rem 0;
+}
+
+.solutionsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.solutionCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.cardIcon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.iconPlaceholder {
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary);
+  border-radius: 50%;
+}
+
+.solutionCard h3 {
+  margin-bottom: 1rem;
+  color: var(--primary-dark);
+}
+
+/* Benefícios Section */
+.benefits {
+  background-color: var(--gray-light);
+  padding: 6rem 0;
+}
+
+.benefitsContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.benefitsText h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-dark);
+}
+
+.benefitsImage {
+  height: 350px;
+  position: relative;
+}
+
+.benefitsImageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Depoimentos Section */
+.testimonials {
+  padding: 6rem 0;
+  background-color: #fff;
+}
+
+.testimonialCard {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  width: 350px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonialHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.testimonialImage {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  margin-right: 1rem;
+  border: 3px solid var(--primary);
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonialImage img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
+
+.testimonialAuthor {
+  flex: 1;
+}
+
+.testimonialAuthor h4 {
+  margin: 0;
+  color: #000000;
+  font-size: 1.2rem;
+}
+
+.testimonialAuthor p {
+  margin: 0;
+  color: #000000;
+  font-size: 0.9rem;
+}
+
+.testimonialContent {
+  font-style: italic;
+  color: #000000;
+  line-height: 1.6;
+}
+
+.testimonialContent::before {
+  content: '"';
+  font-size: 3rem;
+  color: var(--primary-light);
+  line-height: 0;
+  position: relative;
+  top: 15px;
+  margin-right: 5px;
+}
+
+/* Sobre Nós Section */
+.about {
+  padding: 6rem 0;
+  background-color: #004d40;
+}
+
+.about .sectionTitle,
+.about p {
+  color: #ffffff;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+.teamMember {
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.teamMember:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.memberImage {
+  position: relative;
+  height: 300px;
+  width: 100%;
+}
+
+.memberInfo {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.memberInfo h3 {
+  margin-bottom: 0.5rem;
+  color: var(--primary-dark);
+}
+
+.memberInfo p {
+  color: #000000;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+.memberInfo p strong {
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
+/* Contato Section */
+.contact {
+  padding: 6rem 0;
+  background-color: #004d40;
+}
+
+.contact .sectionTitle,
+.contact .formGroup label,
+.contact .whatsappContact p {
+  color: #ffffff;
+}
+
+.contactOptions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.contactOption {
+  padding: 1rem 2rem;
+  margin: 0 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.contactOptionActive {
+  background-color: #ffffff;
+  color: #004d40;
+}
+
+.contactContent {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--foreground);
+}
+
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--gray);
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.formGroup textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--primary-dark);
+  color: var(--text-on-primary);
+  padding: 4rem 0 0; /* Removido o padding-bottom */
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.footerContent {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footerLogo h2 {
+  color: var(--text-on-primary);
+  margin-bottom: 0.5rem;
+}
+
+.footerLinks ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footerLinks li {
+  margin-bottom: 0.5rem;
+}
+
+.footerLinks a {
+  color: var(--text-on-primary);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.footerLinks a:hover {
+  opacity: 1;
+}
+
+.footerBottom {
+  padding: 1rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 2rem;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-bottom: 0;
+  flex: 1;
+}
+
+.footerBottom .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.footerBottomContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.copyright {
+  margin: 0;
+  color: #ffffff;
+}
+
+.developedBy {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.developerLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: #ffffff;
+  transition: opacity 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.developerLink:hover {
+  opacity: 0.8;
+}
+
+.developerLogo {
+  height: 24px;
+  width: auto;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .heroContent,
+  .benefitsContent {
+    grid-template-columns: 1fr;
+  }
+
+  .heroText h2 {
+    font-size: 2.5rem;
+  }
+
+  .navLinks {
+    display: none;
+  }
+
+  .contactOptions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contactOption {
+    margin: 0.5rem 0;
+  }
+
+  .footerBottomContent {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+
+  .copyright {
+    font-size: 0.9rem;
+  }
+
+  .developerLink {
+    font-size: 0.85rem;
+  }
+
+  .developerLogo {
+    height: 20px;
+  }
+
+  .developedBy {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .developerLogo {
+    height: 18px;
+  }
+
+  .developerLink {
+    font-size: 0.8rem;
+  }
+}
+
+/* Animações */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.floatAnimation {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Modal de Orçamento */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 1rem;
+}
+
+.modalContent {
+  background-color: var(--background);
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modalClose {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--gray);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.modalClose:hover {
+  background-color: var(--gray-light);
+  color: var(--foreground);
+}
+
+.modalContent h2 {
+  margin-bottom: 2rem;
+  color: var(--primary-dark);
+  text-align: center;
+}
+
+/* Ajustes para o formulário dentro do modal */
+.modalContent .contactForm {
+  box-shadow: none;
+  padding: 0;
+  background: none;
+}
+
+.modalContent .formGroup input,
+.modalContent .formGroup textarea {
+  background-color: var(--gray-light);
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.modalContent .formGroup input:focus,
+.modalContent .formGroup textarea:focus {
+  border-color: var(--primary);
+  background-color: var(--background);
+  outline: none;
+}
+
+/* Responsividade do modal */
+@media (max-width: 768px) {
+  .modalContent {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+}
+
+/* Submenu de Orçamento */
+.submenuContainer {
+  position: relative;
+}
+
+.submenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  padding: 0.5rem;
+  min-width: 200px;
+  z-index: 1000;
+  margin-top: 0.5rem;
+  border: 1px solid var(--gray-light);
+}
+
+.submenuItem {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  color: #000000;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  background-color: #ffffff;
+  font-weight: 500;
+  gap: 0.75rem;
+}
+
+.submenuText {
+  display: flex;
+  flex-direction: column;
+}
+
+.submenuText span {
+  font-weight: 500;
+  color: #000000;
+}
+
+.submenuText small {
+  font-size: 0.75rem;
+  color: var(--gray);
+  font-weight: normal;
+  margin-top: 0.25rem;
+}
+
+.submenuItem:hover {
+  background-color: var(--primary-light);
+}
+
+.submenuItem:hover .submenuText span {
+  color: var(--primary);
+}
+
+.submenuItem:hover .submenuText small {
+  color: var(--primary-dark);
+}
+
+/* Ajuste para o submenu em telas menores */
+@media (max-width: 768px) {
+  .submenu {
+    right: -1rem;
+  }
+}
+
+.submenuIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.submenuIcon img {
+  width: 100%;
+  height: 100%;
+}
+
+.tooltipOverlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.tooltipContent {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  text-align: center;
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease-out;
+  position: relative;
+}
+
+.tooltipContent::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid var(--primary);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Projetos Section */
+.projects {
+  padding: 6rem 0;
+  background-color: #fff;
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.projectCard {
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.projectCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.projectImage {
+  position: relative;
+  height: 250px;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+}
+
+.projectImageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+}
+
+.projectImageOverlay span {
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid white;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.6);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.projectInfo {
+  padding: 1.5rem;
+}
+
+.projectInfo h3 {
+  color: var(--primary-dark);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.projectInfo p {
+  color: #000000;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.projectDetails {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--gray-light);
+  padding-top: 1rem;
+}
+
+.projectDetails li {
+  color: #000000;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.projectDetails li:last-child {
+  margin-bottom: 0;
+}
+
+.projectDetails li::before {
+  content: "•";
+  color: var(--primary);
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Menu Mobile */
+.mobileMenuButton {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+
+.hamburger {
+  display: block;
+  position: relative;
+  width: 24px;
+  height: 2px;
+  background-color: var(--primary-dark);
+  transition: all 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: var(--primary-dark);
+  transition: all 0.3s ease;
+}
+
+.hamburger::before {
+  top: -8px;
+}
+
+.hamburger::after {
+  bottom: -8px;
+}
+
+.hamburger.active {
+  background-color: transparent;
+}
+
+.hamburger.active::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.hamburger.active::after {
+  transform: rotate(-45deg);
+  bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .mobileMenuButton {
+    display: block;
+    position: relative;
+    z-index: 1002;
+  }
+
+  .navLinks {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100%;
+    background-color: #ffffff;
+    flex-direction: column;
+    padding: 8rem 2rem 2rem;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    z-index: 1001;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Melhor scroll no iOS */
+    overscroll-behavior: contain; /* Evita scroll do body quando o menu está aberto */
+  }
+
+  /* Previne o scroll do body quando o menu está aberto */
+  body.menuOpen {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+
+  .navLinks.mobileMenuOpen {
+    right: 0;
+    visibility: visible;
+    opacity: 1;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+  }
+
+  .navLinks li {
+    width: 100%;
+    margin: 0.75rem 0;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .navLinks a {
+    display: block;
+    padding: 1rem 0;
+    width: 100%;
+    color: var(--primary-dark);
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .submenu {
+    position: static;
+    box-shadow: none;
+    margin-top: 0.5rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--primary-light);
+    background: transparent;
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .submenuItem {
+    padding: 0.75rem 0;
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Removendo o overlay escuro */
+  .navLinks.mobileMenuOpen::before {
+    display: none;
+  }
+}
+
+/* Estilos para o Modal da Galeria */
+.galleryModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 0;
+  /* Garantindo que o overlay permaneça fixo */
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  /* Prevenindo interações com o conteúdo por trás */
+  pointer-events: auto;
+}
+
+/* Previne scroll do body quando o modal está aberto */
+body.modalOpen {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  /* Garantindo que o body não role */
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+.galleryModalContent {
+  background-color: #ffffff;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  /* Garantindo que o conteúdo permaneça fixo */
+  overflow: hidden;
+  /* Permitindo interação apenas com o conteúdo do modal */
+  pointer-events: auto;
+  /* Prevenindo scroll */
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+.galleryModalClose {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: none;
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--primary-dark);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 1001;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.galleryModalClose:hover {
+  background-color: var(--primary);
+  color: white;
+  transform: scale(1.1);
+}
+
+.galleryContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #000000;
+  position: relative;
+  overflow: hidden;
+}
+
+.galleryMainImage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  overflow: hidden;
+}
+
+.galleryNavButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.galleryNavButton:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+.galleryPrevButton {
+  left: 2rem;
+}
+
+.galleryNextButton {
+  right: 2rem;
+}
+
+.galleryThumbnails {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.galleryThumbnail {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.galleryThumbnail.active {
+  border-color: var(--primary);
+}
+
+.galleryThumbnail:hover {
+  transform: scale(1.1);
+}
+
+.galleryInfo {
+  height: 100%;
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.galleryInfo h2 {
+  color: var(--primary-dark);
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+.galleryInfo p {
+  color: #000000;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.galleryDetails {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--gray-light);
+  margin-top: auto;
+}
+
+.galleryDetail {
+  color: #000000;
+  font-size: 1.1rem;
+}
+
+.galleryDetail strong {
+  color: var(--primary-dark);
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* Responsividade da galeria */
+@media (max-width: 1024px) {
+  .galleryModalContent {
+    display: flex; /* Usar flexbox para empilhar itens */
+    flex-direction: column; /* Empilhar verticalmente */
+    /* Removendo estilos de grid conflitantes */
+    grid-template-columns: none;
+    grid-template-rows: none;
+    grid-auto-flow: initial;
+
+    /* Removendo fixed position em mobile para permitir layout de grid normal */
+    position: static;
+    top: auto;
+    left: auto;
+    width: auto;
+    height: auto;
+    overflow-y: hidden; /* O container principal não rola */
+    /* Garantindo que o flexbox ocupe o espaço disponível */
+    min-height: 100vh;
+  }
+
+  /* Ajustando a ordem dos itens para mobile */
+  .galleryContainer {
+    order: 1; /* Imagem primeiro */
+    overflow: hidden;
+    /* Garantindo que a imagem container ocupe a largura total */
+    width: 100%;
+    height: auto; /* Altura automática baseada no conteúdo */
+  }
+
+  .galleryInfo {
+    order: 2; /* Informação segundo */
+    padding: 2rem;
+    height: auto;
+    overflow-y: auto; /* Permite scroll apenas na área de info em mobile */
+    /* Garantindo que a área de info ocupe a largura total */
+    width: 100%;
+  }
+
+  .galleryInfo h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .galleryThumbnails {
+    bottom: 1rem;
+    left: 50%; /* Manter centralizado */
+    transform: translateX(-50%); /* Manter centralizado */
+  }
+
+  .galleryThumbnail {
+    width: 60px;
+    height: 60px;
+  }
+
+  .galleryNavButton {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+
+  .galleryPrevButton {
+    left: 1rem;
+  }
+
+  .galleryNextButton {
+    right: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .galleryInfo {
+    padding: 1.5rem;
+  }
+
+  .galleryInfo h2 {
+    font-size: 1.8rem;
+  }
+
+  .galleryInfo p {
+    font-size: 1rem;
+  }
+
+  .galleryDetail {
+    font-size: 1rem;
+  }
+
+  .galleryDetail strong {
+    font-size: 1.1rem;
+  }
+
+  .galleryThumbnails {
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .galleryThumbnail {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.whatsappContact {
+  text-align: center;
+}
+
+.whatsappContact p {
+  margin-bottom: 1.5rem;
+  color: #000000;
+}
+
+.whatsappContact .button {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.whatsappContact .button:hover {
+  background-color: #1a1a1a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.whatsappContact .button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
