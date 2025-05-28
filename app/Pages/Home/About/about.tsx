@@ -3,41 +3,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import styles from "./about.module.css";
-
-interface TeamMember {
-  id: number;
-  name: string;
-  role: string;
-  image: string;
-  description: string;
-}
-
-const teamMembers: TeamMember[] = [
-  {
-    id: 1,
-    name: "Henrique Cruz",
-    role: "Engenheiro Mecânico",
-    image: "/images/Henrique-Cruz.jpeg",
-    description:
-      "Especialista em sistemas de filtragem industrial com mais de 15 anos de experiência no desenvolvimento de soluções para qualidade do ar.",
-  },
-  {
-    id: 2,
-    name: "Henrique Reimão",
-    role: "Fundador",
-    image: "/images/Henrique Reimao.jpeg",
-    description:
-      "Visionário que iniciou a AirTech com o objetivo de transformar ambientes industriais em espaços mais saudáveis e produtivos através da tecnologia.",
-  },
-  {
-    id: 3,
-    name: "Paulo Comedor de Traveco",
-    role: "Diretor de Vendas e Marketing",
-    image: "/images/paulo.enc",
-    description:
-      "Responsável por desenvolver estratégias inovadoras de mercado e garantir que nossas soluções atendam perfeitamente às necessidades dos clientes.",
-  },
-];
+import { teamMembers } from "../../../data/teamData";
+import Card from "../../../components/Card/Card";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -101,26 +68,18 @@ export function About() {
           className={styles.teamGrid}
         >
           {teamMembers.map((member) => (
-            <motion.div
-              key={member.id}
-              variants={itemVariants}
-              className={styles.teamMember}
-            >
-              <div className={styles.memberImage}>
-                <Image
-                  src={member.image}
-                  alt={`Foto de ${member.name}`}
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
-              </div>
-              <div className={styles.memberInfo}>
-                <h3>{member.name}</h3>
-                <p>
-                  <strong>{member.role}</strong>
-                </p>
-                <p>{member.description}</p>
-              </div>
+            <motion.div key={member.name} variants={itemVariants}>
+              <Card
+                image={member.image}
+                title={member.name}
+                description={
+                  <>
+                    <strong>{member.role}</strong>
+                    <br />
+                    {member.description}
+                  </>
+                }
+              />
             </motion.div>
           ))}
         </motion.div>

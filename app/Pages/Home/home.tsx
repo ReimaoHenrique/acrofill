@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import styles from "./home.module.css";
+import { NeonButton } from "@/app/components/NeonButton/NeonButton";
 
 interface HomeProps {
   heroY: any;
@@ -40,34 +41,34 @@ export function Home({ heroY, heroOpacity }: HomeProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <motion.a
-                href="#contato"
-                className={styles.button}
+              <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={(e) => {
-                  e.preventDefault();
-                  document
-                    .getElementById("contato")
-                    ?.scrollIntoView({ behavior: "smooth" });
-                }}
               >
-                Solicitar Orçamento
-              </motion.a>
-              <motion.a
-                href="#solucoes"
-                className={`${styles.button} ${styles.secondary}`}
+                <NeonButton
+                  onClick={() => {
+                    document
+                      .getElementById("contato")
+                      ?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
+                  Solicitar Orçamento
+                </NeonButton>
+              </motion.div>
+              <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={(e) => {
-                  e.preventDefault();
-                  document
-                    .getElementById("solucoes")
-                    ?.scrollIntoView({ behavior: "smooth" });
-                }}
               >
-                Conhecer Soluções
-              </motion.a>
+                <NeonButton
+                  onClick={() => {
+                    document
+                      .getElementById("solucoes")
+                      ?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
+                  Conhecer Soluções
+                </NeonButton>
+              </motion.div>
             </motion.div>
           </div>
           <motion.div

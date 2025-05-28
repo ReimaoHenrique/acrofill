@@ -1,12 +1,12 @@
 // components/Card.tsx
-import React from "react";
+import React, { ReactNode } from "react";
 import { motion } from "framer-motion";
 import styles from "./card.module.css";
 
 interface CardProps {
   image: string;
   title: string;
-  description?: string;
+  description?: ReactNode;
   onClick?: () => void;
 }
 
