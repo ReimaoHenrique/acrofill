@@ -74,7 +74,7 @@ export function Benefits({ benefitsScale, benefitsOpacity }: BenefitsProps) {
               className={styles.benefitsImageContainer}
             >
               <Image
-                src="/images/air-quality-1.jpg"
+                src="/images/pulmao-verde.jpg"
                 alt="Benefícios da qualidade do ar em ambiente industrial"
                 fill
                 style={{ objectFit: "cover" }}

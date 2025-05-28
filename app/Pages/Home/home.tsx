@@ -3,7 +3,19 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import styles from "./home.module.css";
-import { NeonButton } from "@/app/components/NeonButton/NeonButton";
+
+interface ButtonProps {
+  children: React.ReactNode;
+  onClick: () => void;
+}
+
+const Button = ({ children, onClick }: ButtonProps) => {
+  return (
+    <button onClick={onClick} className={styles.button}>
+      {children}
+    </button>
+  );
+};
 
 interface HomeProps {
   heroY: any;
@@ -45,7 +57,7 @@ export function Home({ heroY, heroOpacity }: HomeProps) {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <NeonButton
+                <Button
                   onClick={() => {
                     document
                       .getElementById("contato")
@@ -53,13 +65,13 @@ export function Home({ heroY, heroOpacity }: HomeProps) {
                   }}
                 >
                   Solicitar Orçamento
-                </NeonButton>
+                </Button>
               </motion.div>
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <NeonButton
+                <Button
                   onClick={() => {
                     document
                       .getElementById("solucoes")
@@ -67,7 +79,7 @@ export function Home({ heroY, heroOpacity }: HomeProps) {
                   }}
                 >
                   Conhecer Soluções
-                </NeonButton>
+                </Button>
               </motion.div>
             </motion.div>
           </div>
