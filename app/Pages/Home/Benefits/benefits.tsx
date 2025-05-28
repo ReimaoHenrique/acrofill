@@ -1,8 +1,13 @@
 "use client";
 
-import { motion, MotionValue } from "framer-motion";
+import { motion, MotionValue, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import styles from "./benefits.module.css";
+import { useState } from "react";
+import {
+  accordionItems,
+  AccordionItem,
+} from "../../../data/benefitsAccordionData";
 
 interface BenefitsProps {
   benefitsScale: MotionValue<number>;
@@ -10,6 +15,8 @@ interface BenefitsProps {
 }
 
 export function Benefits({ benefitsScale, benefitsOpacity }: BenefitsProps) {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
   return (
     <section id="beneficios" className={styles.benefits + " section"}>
       <div className="container">
@@ -20,67 +27,74 @@ export function Benefits({ benefitsScale, benefitsOpacity }: BenefitsProps) {
           }}
           className={styles.benefitsContent}
         >
-          <div className={styles.benefitsText}>
-            <motion.h2
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              Por que investir em qualidade do ar?
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              A qualidade do ar em ambientes industriais impacta diretamente na
-              saúde dos colaboradores e na eficiência dos processos produtivos.
-              Ambientes com ar purificado reduzem o absenteísmo por problemas
-              respiratórios e aumentam significativamente o bem-estar e a
-              produtividade da equipe.
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              Além disso, nossas soluções ajudam sua empresa a atender às
-              exigências das normas regulamentadoras, evitando multas e
-              processos trabalhistas relacionados à insalubridade. Investir em
-              qualidade do ar não é apenas uma questão de conformidade legal,
-              mas um diferencial competitivo que valoriza o capital humano da
-              sua organização.
-            </motion.p>
-          </div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className={styles.benefitsImage}
+            className={styles.benefitsTitle}
           >
-            <motion.div
-              animate={{
-                rotate: [0, 2, 0, -2, 0],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className={styles.benefitsImageContainer}
-            >
-              <Image
-                src="/images/pulmao-verde.jpg"
-                alt="Benefícios da qualidade do ar em ambiente industrial"
-                fill
-                style={{ objectFit: "cover" }}
-              />
-            </motion.div>
-          </motion.div>
+            Benefícios da Qualidade do Ar
+          </motion.h2>
+
+          <div className={styles.accordion}>
+            {accordionItems.map((item: AccordionItem, index: number) => (
+              <motion.div
+                key={item.id}
+                className={styles.accordionItem}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <motion.button
+                  className={`${styles.accordionButton} ${
+                    activeIndex === index ? styles.active : ""
+                  }`}
+                  onClick={() =>
+                    setActiveIndex(activeIndex === index ? null : index)
+                  }
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {item.title}
+                  <motion.span
+                    animate={{ rotate: activeIndex === index ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                    className={styles.accordionIcon}
+                  >
+                    ▼
+                  </motion.span>
+                </motion.button>
+
+                <AnimatePresence>
+                  {activeIndex === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className={styles.accordionContent}
+                    >
+                      <div className={styles.accordionContentWrapper}>
+                        <div className={styles.accordionText}>
+                          <p>{item.content}</p>
+                        </div>
+                        <div className={styles.accordionImage}>
+                          <Image
+                            src={item.image}
+                            alt={item.title}
+                            fill
+                            style={{ objectFit: "cover" }}
+                          />
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

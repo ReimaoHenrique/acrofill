@@ -1,69 +1,105 @@
 .benefits {
-  padding: 80px 0;
-  background-color: var(--background-secondary);
-  overflow: hidden;
+  padding: 4rem 0;
+  background-color: #f8f9fa;
 }
 
 .benefitsContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.benefitsTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 3rem;
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.accordionItem {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.accordionButton {
+  width: 100%;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  text-align: left;
+  transition: background-color 0.3s ease;
+}
+
+.accordionButton:hover {
+  background-color: #f8f9fa;
+}
+
+.accordionButton.active {
+  background-color: #e9ecef;
+}
+
+.accordionIcon {
+  font-size: 0.8rem;
+  color: #6c757d;
+  transition: transform 0.3s ease;
+}
+
+.accordionContent {
+  overflow: hidden;
+}
+
+.accordionContentWrapper {
+  padding: 1.5rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  gap: 2rem;
   align-items: center;
 }
 
-.benefitsText {
-  background-color: #ffffff;
-  padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-.benefitsText h2 {
-  color: #004d40;
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 24px;
-  line-height: 1.2;
-}
-
-.benefitsText p {
-  color: #333333;
-  font-size: 1.1rem;
+.accordionText {
+  font-size: 1rem;
   line-height: 1.6;
-  margin-bottom: 20px;
+  color: #495057;
 }
 
-.benefitsText p:last-child {
-  margin-bottom: 0;
-}
-
-.benefitsImage {
+.accordionImage {
   position: relative;
   width: 100%;
-  height: 500px;
-  border-radius: 12px;
+  height: 250px;
+  border-radius: 8px;
   overflow: hidden;
-}
-
-.benefitsImageContainer {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 768px) {
-  .benefitsContent {
+  .accordionContentWrapper {
     grid-template-columns: 1fr;
   }
 
-  .benefitsText h2 {
+  .accordionImage {
+    height: 200px;
+  }
+
+  .benefitsTitle {
     font-size: 2rem;
   }
 
-  .benefitsImage {
-    height: 300px;
+  .accordionButton {
+    font-size: 1rem;
+    padding: 1.2rem;
   }
 }
