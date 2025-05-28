@@ -15,7 +15,6 @@ export const projects: Project[] = [
     images: [
       "/images/Card_Projetos/Itau_fachada.webp",
       "/images/Card_Projetos/Image-Exemple.jpg",
-      "/images/air-quality-1.jpg",
     ],
     route: "/Pages/projetos-realizados/Itau",
   },
@@ -26,7 +25,6 @@ export const projects: Project[] = [
     image: "/images/Card_Projetos/Image-Exemple.jpg",
     images: [
       "/images/Card_Projetos/Image-Exemple.jpg",
-      "/images/air-quality-1.jpg",
       "/images/Card_Projetos/Itau_fachada.webp",
     ],
     route: "/Pages/projetos-realizados/Itau",
@@ -46,11 +44,11 @@ export const projects: Project[] = [
   {
     title: "Projeto de Ventilação Industrial",
     description: "Implementação de sistema de ventilação industrial em galpão",
-    image: "/images/air-quality-1.jpg",
+    image: "/images/Card_Projetos/Image-Exemple.jpg",
     images: [
-      "/images/air-quality-1.jpg",
-      "/images/air-quality-1.jpg",
-      "/images/air-quality-1.jpg",
+      "/images/Card_Projetos/Image-Exemple.jpg",
+      "/images/Card_Projetos/Image-Exemple.jpg",
+      "/images/Card_Projetos/Image-Exemple.jpg",
     ],
     route: "/Pages/projetos-realizados/Itau",
   },
@@ -62,7 +60,6 @@ export const projects: Project[] = [
     images: [
       "/images/Card_Projetos/Itau_fachada.webp",
       "/images/Card_Projetos/Image-Exemple.jpg",
-      "/images/air-quality-1.jpg",
     ],
     route: "/Pages/projetos-realizados/Itau",
   },
