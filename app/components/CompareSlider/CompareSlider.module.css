@@ -26,6 +26,29 @@
 
 .slider {
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  width: 100% !important;
+  max-width: 100%;
+  height: auto !important;
+  min-height: 200px;
+}
+
+.slider :global(.react-compare-slider__item) {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+
+.slider :global(.react-compare-slider__item img) {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+
+@media (min-width: 1024px) {
+  .slider {
+    height: 500px !important;
+    min-height: 500px;
+  }
 }
 
 /* Estilização do controle deslizante */

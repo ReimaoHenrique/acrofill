@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import styles from "./solutions.module.css";
+import CompareSlider from "@/app/components/CompareSlider/CompareSlider";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -38,7 +39,13 @@ export function Solutions() {
         >
           Inovação em Filtragem
         </motion.h2>
-
+        <CompareSlider
+          imagemSemFiltro="/images/CompareSlider/sem-filtro.jpeg"
+          imagemComFiltro="/images//CompareSlider/com-filtro.jpeg"
+          posicaoInicial={40}
+          altura="500px"
+          largura="750px"
+        />
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -51,21 +58,8 @@ export function Solutions() {
             whileHover={{ y: -10 }}
             className={styles.solutionCard}
           >
-            <div className={styles.cardIcon}>
-              <motion.div
-                animate={{
-                  scale: [1, 1.1, 1],
-                  rotate: [0, 5, 0, -5, 0],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className={styles.iconPlaceholder}
-              ></motion.div>
-            </div>
             <h3>Filtros Industriais Avançados</h3>
+
             <p>
               Nossos filtros industriais utilizam tecnologia de ponta para
               capturar até 99,97% das micropartículas presentes no ar.

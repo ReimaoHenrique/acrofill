@@ -45,8 +45,8 @@ export default function CompareSlider({
         className={styles.slider}
         position={posicaoInicial}
         style={{
-          width: largura,
-          height: altura,
+          width: "100%",
+          maxWidth: largura,
           borderRadius: "8px",
         }}
       />
