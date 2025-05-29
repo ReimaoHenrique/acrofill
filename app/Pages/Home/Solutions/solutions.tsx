@@ -36,7 +36,7 @@ export function Solutions() {
           transition={{ duration: 0.6 }}
           className={styles.sectionTitle}
         >
-          Soluções de Alta Tecnologia
+          Inovação em Filtragem
         </motion.h2>
 
         <motion.div

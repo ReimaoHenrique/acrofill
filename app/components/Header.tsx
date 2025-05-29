@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useRef, useEffect } from "react";
 import styles from "../page.module.css";
+import { useRouter, usePathname } from "next/navigation";
+import { useModal } from "../layout";
 
 interface HeaderProps {
   activeSection: string;
@@ -11,8 +13,6 @@ interface HeaderProps {
   handleMobileMenuClick: () => void;
   setShowSubmenu: (show: boolean) => void;
   showSubmenu: boolean;
-  setIsModalOpen: (show: boolean) => void;
-  setShowWhatsappTooltip: (show: boolean) => void;
   isMobileMenuOpen: boolean;
   setIsMobileMenuOpen: (show: boolean) => void;
 }
@@ -23,12 +23,29 @@ export function Header({
   handleMobileMenuClick,
   setShowSubmenu,
   showSubmenu,
-  setIsModalOpen,
-  setShowWhatsappTooltip,
   isMobileMenuOpen,
   setIsMobileMenuOpen,
 }: HeaderProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
   const submenuRef = useRef<HTMLLIElement>(null);
+  const { setIsModalOpen } = useModal();
+
+  const handleNavigation = (section: string) => {
+    if (isHomePage) {
+      // Na página principal, usa scroll suave
+      const element = document.getElementById(section);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        handleMobileMenuClick();
+      }
+    } else {
+      // Em subpáginas, navega para a página principal com a seção
+      router.push(`/#${section}`);
+      handleMobileMenuClick();
+    }
+  };
 
   // Fechar menu mobile quando clicar fora
   useEffect(() => {
@@ -104,14 +121,11 @@ export function Header({
           >
             <motion.li whileHover={{ scale: 1.05 }}>
               <a
-                href="#inicio"
+                href={isHomePage ? "#inicio" : "/#inicio"}
                 className={activeSection === "inicio" ? styles.navActive : ""}
                 onClick={(e) => {
                   e.preventDefault();
-                  document
-                    .getElementById("inicio")
-                    ?.scrollIntoView({ behavior: "smooth" });
-                  handleMobileMenuClick();
+                  handleNavigation("inicio");
                 }}
               >
                 Início
@@ -119,14 +133,11 @@ export function Header({
             </motion.li>
             <motion.li whileHover={{ scale: 1.05 }}>
               <a
-                href="#solucoes"
+                href={isHomePage ? "#solucoes" : "/#solucoes"}
                 className={activeSection === "solucoes" ? styles.navActive : ""}
                 onClick={(e) => {
                   e.preventDefault();
-                  document
-                    .getElementById("solucoes")
-                    ?.scrollIntoView({ behavior: "smooth" });
-                  handleMobileMenuClick();
+                  handleNavigation("solucoes");
                 }}
               >
                 Soluções
@@ -134,16 +145,13 @@ export function Header({
             </motion.li>
             <motion.li whileHover={{ scale: 1.05 }}>
               <a
-                href="#beneficios"
+                href={isHomePage ? "#beneficios" : "/#beneficios"}
                 className={
                   activeSection === "beneficios" ? styles.navActive : ""
                 }
                 onClick={(e) => {
                   e.preventDefault();
-                  document
-                    .getElementById("beneficios")
-                    ?.scrollIntoView({ behavior: "smooth" });
-                  handleMobileMenuClick();
+                  handleNavigation("beneficios");
                 }}
               >
                 Benefícios
@@ -151,14 +159,11 @@ export function Header({
             </motion.li>
             <motion.li whileHover={{ scale: 1.05 }}>
               <a
-                href="#sobre"
+                href={isHomePage ? "#sobre" : "/#sobre"}
                 className={activeSection === "sobre" ? styles.navActive : ""}
                 onClick={(e) => {
                   e.preventDefault();
-                  document
-                    .getElementById("sobre")
-                    ?.scrollIntoView({ behavior: "smooth" });
-                  handleMobileMenuClick();
+                  handleNavigation("sobre");
                 }}
               >
                 Sobre Nós
@@ -166,16 +171,13 @@ export function Header({
             </motion.li>
             <motion.li whileHover={{ scale: 1.05 }}>
               <a
-                href="#depoimentos"
+                href={isHomePage ? "#depoimentos" : "/#depoimentos"}
                 className={
                   activeSection === "depoimentos" ? styles.navActive : ""
                 }
                 onClick={(e) => {
                   e.preventDefault();
-                  document
-                    .getElementById("depoimentos")
-                    ?.scrollIntoView({ behavior: "smooth" });
-                  handleMobileMenuClick();
+                  handleNavigation("depoimentos");
                 }}
               >
                 Depoimentos
@@ -183,14 +185,11 @@ export function Header({
             </motion.li>
             <motion.li whileHover={{ scale: 1.05 }}>
               <a
-                href="#contato"
+                href={isHomePage ? "#contato" : "/#contato"}
                 className={activeSection === "contato" ? styles.navActive : ""}
                 onClick={(e) => {
                   e.preventDefault();
-                  document
-                    .getElementById("contato")
-                    ?.scrollIntoView({ behavior: "smooth" });
-                  handleMobileMenuClick();
+                  handleNavigation("contato");
                 }}
               >
                 Contato
@@ -230,8 +229,6 @@ export function Header({
                         handleMobileMenuClick();
                       }}
                       className={styles.submenuItem}
-                      onMouseEnter={() => setShowWhatsappTooltip(true)}
-                      onMouseLeave={() => setShowWhatsappTooltip(false)}
                     >
                       <span className={styles.submenuIcon}>
                         <Image

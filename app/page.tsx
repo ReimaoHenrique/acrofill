@@ -1,13 +1,12 @@
 "use client";
 
 import { useScroll, useTransform } from "framer-motion";
-import { useRef, useEffect, useState, useCallback, useMemo } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { useScrollPosition } from "./hooks/useScrollPosition";
 import styles from "./page.module.css";
+import { useModal } from "./layout";
 
 // Importando os componentes
-import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
 import { Home as HomeSection } from "./Pages/Home/home";
 import { Solutions } from "./Pages/Home/Solutions/solutions";
 import { Benefits } from "./Pages/Home/Benefits/benefits";
@@ -20,12 +19,11 @@ import Projects from "./Pages/Home/Projects/Projects";
 export default function HomePage() {
   // Estados consolidados
   const [uiState, setUiState] = useState({
-    isHeaderScrolled: false,
-    isMobileMenuOpen: false,
-    isModalOpen: false,
     showSubmenu: false,
     showWhatsappTooltip: false,
   });
+
+  const { isModalOpen, setIsModalOpen } = useModal();
 
   // Hook personalizado para navegação
   const { activeSection, scrollY, scrollProgress } = useScrollPosition({
@@ -59,16 +57,7 @@ export default function HomePage() {
     },
   };
 
-  // Atualização do header baseado no scroll
-  useEffect(() => {
-    setUiState((prev) => ({ ...prev, isHeaderScrolled: scrollY > 50 }));
-  }, [scrollY]);
-
   // Handlers simplificados
-  const handleMobileMenuClick = useCallback(() => {
-    setUiState((prev) => ({ ...prev, isMobileMenuOpen: false }));
-  }, []);
-
   const updateUiState = useCallback(
     (key: keyof typeof uiState, value: boolean) => {
       setUiState((prev) => ({ ...prev, [key]: value }));
@@ -82,22 +71,6 @@ export default function HomePage() {
       <div
         className={styles.scrollProgress}
         style={{ "--scroll": `${scrollProgress}%` } as React.CSSProperties}
-      />
-
-      <Header
-        activeSection={activeSection}
-        isHeaderScrolled={uiState.isHeaderScrolled}
-        handleMobileMenuClick={handleMobileMenuClick}
-        setShowSubmenu={(value) => updateUiState("showSubmenu", value)}
-        showSubmenu={uiState.showSubmenu}
-        setIsModalOpen={(value) => updateUiState("isModalOpen", value)}
-        setShowWhatsappTooltip={(value) =>
-          updateUiState("showWhatsappTooltip", value)
-        }
-        isMobileMenuOpen={uiState.isMobileMenuOpen}
-        setIsMobileMenuOpen={(value) =>
-          updateUiState("isMobileMenuOpen", value)
-        }
       />
 
       <main>
@@ -116,12 +89,10 @@ export default function HomePage() {
         <Contact />
 
         <OrcamentoModal
-          isModalOpen={uiState.isModalOpen}
-          setIsModalOpen={(value) => updateUiState("isModalOpen", value)}
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
         />
       </main>
-
-      <Footer />
     </div>
   );
 }

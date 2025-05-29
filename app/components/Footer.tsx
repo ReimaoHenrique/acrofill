@@ -1,8 +1,26 @@
 "use client";
 
 import styles from "../page.module.css";
+import { useRouter, usePathname } from "next/navigation";
 
 export function Footer() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+
+  const handleNavigation = (section: string) => {
+    if (isHomePage) {
+      // Na página principal, usa scroll suave
+      const element = document.getElementById(section);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Em subpáginas, navega para a página principal com a seção
+      router.push(`/#${section}`);
+    }
+  };
+
   return (
     <footer className={styles.footer}>
       <div className="container">
@@ -15,16 +33,48 @@ export function Footer() {
             <h3>Links Rápidos</h3>
             <ul>
               <li>
-                <a href="#inicio">Início</a>
+                <a
+                  href={isHomePage ? "#inicio" : "/#inicio"}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavigation("inicio");
+                  }}
+                >
+                  Início
+                </a>
               </li>
               <li>
-                <a href="#solucoes">Soluções</a>
+                <a
+                  href={isHomePage ? "#solucoes" : "/#solucoes"}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavigation("solucoes");
+                  }}
+                >
+                  Soluções
+                </a>
               </li>
               <li>
-                <a href="#sobre">Sobre Nós</a>
+                <a
+                  href={isHomePage ? "#sobre" : "/#sobre"}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavigation("sobre");
+                  }}
+                >
+                  Sobre Nós
+                </a>
               </li>
               <li>
-                <a href="#contato">Contato</a>
+                <a
+                  href={isHomePage ? "#contato" : "/#contato"}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavigation("contato");
+                  }}
+                >
+                  Contato
+                </a>
               </li>
             </ul>
           </div>
