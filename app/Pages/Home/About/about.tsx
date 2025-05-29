@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import styles from "./about.module.css";
-import { teamMembers } from "../../../data/teamData";
 import { SimpleMemberCard } from "../../../components/MemberCard/MemberCard";
+import teamData from "../../../data/teamData.json";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -27,7 +27,7 @@ const itemVariants = {
   },
 };
 
-export function About() {
+export default function About() {
   return (
     <section id="sobre" className={styles.about + " section"}>
       <div className="container">
@@ -66,7 +66,7 @@ export function About() {
           viewport={{ once: true }}
           className={styles.teamGrid}
         >
-          {teamMembers.map((member) => (
+          {teamData.teamMembers.map((member) => (
             <motion.div key={member.name} variants={itemVariants}>
               <SimpleMemberCard
                 name={member.name}

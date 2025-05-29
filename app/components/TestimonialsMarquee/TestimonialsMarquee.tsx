@@ -1,14 +1,13 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
-import { testimonials } from "@/app/data/testimonials";
+import testimonialsData from "@/app/data/testimonials.json";
 import styles from "./TestimonialsMarquee.module.css";
 
 export function TestimonialsMarquee() {
-  const memoizedTestimonials = useMemo(() => testimonials, []);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -42,7 +41,7 @@ export function TestimonialsMarquee() {
       direction="left"
       style={{ width: "100%" }}
     >
-      {memoizedTestimonials.map((testimonial) => (
+      {testimonialsData.testimonials.map((testimonial) => (
         <motion.div
           key={testimonial.id}
           whileHover={{ y: -10 }}

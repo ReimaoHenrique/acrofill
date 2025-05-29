@@ -12,11 +12,10 @@ import { Home as HomeSection } from "./Pages/Home/home";
 import { Solutions } from "./Pages/Home/Solutions/solutions";
 import { Benefits } from "./Pages/Home/Benefits/benefits";
 import { Testimonials } from "./Pages/Home/Testimonials/testimonials";
-import { About } from "./Pages/Home/About/about";
+import About from "./Pages/Home/About/about";
 import { Contact } from "./Pages/Home/Contact/contact";
 import { OrcamentoModal } from "./components/EmailCapturePopup/OrcamentoModal";
 import Projects from "./Pages/Home/Projects/Projects";
-import { projects } from "./data/projects";
 
 export default function HomePage() {
   // Estados consolidados
@@ -107,7 +106,7 @@ export default function HomePage() {
           heroOpacity={parallaxEffects.hero.opacity}
         />
         <Solutions />
-        <Projects projects={projects} />
+        <Projects />
         <Benefits
           benefitsScale={parallaxEffects.benefits.scale}
           benefitsOpacity={parallaxEffects.benefits.opacity}

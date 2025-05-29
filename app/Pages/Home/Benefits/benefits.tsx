@@ -4,10 +4,7 @@ import { motion, MotionValue, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import styles from "./benefits.module.css";
 import { useState } from "react";
-import {
-  accordionItems,
-  AccordionItem,
-} from "../../../data/benefitsAccordionData";
+import benefitsData from "../../../data/benefitsAccordionData.json";
 
 interface BenefitsProps {
   benefitsScale: MotionValue<number>;
@@ -38,7 +35,7 @@ export function Benefits({ benefitsScale, benefitsOpacity }: BenefitsProps) {
           </motion.h2>
 
           <div className={styles.accordion}>
-            {accordionItems.map((item: AccordionItem, index: number) => (
+            {benefitsData.accordionItems.map((item, index) => (
               <motion.div
                 key={item.id}
                 className={styles.accordionItem}

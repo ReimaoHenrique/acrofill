@@ -1,36 +1,28 @@
+"use client";
+
 import React from "react";
 import styles from "./Projects.module.css";
 import Card from "../../../components/Card/Card";
 import Link from "next/link";
-import { Project } from "../../../data/projects";
+import projectsData from "../../../data/projects.json";
 
-interface ProjectsProps {
-  projects: Project[];
-}
-
-const Projects: React.FC<ProjectsProps> = ({ projects }) => {
+export default function Projects() {
   return (
-    <div className={styles.container}>
-      <section className={styles.projectsSection}>
-        <h2 className={styles.title}>Projetos Realizados</h2>
+    <section id="projetos" className={styles.projects + " section"}>
+      <div className="container">
+        <h2 className={styles.sectionTitle}>Projetos Realizados</h2>
         <div className={styles.projectsGrid}>
-          {projects.map((project, index) => (
-            <Link
-              key={index}
-              href={project.route}
-              style={{ textDecoration: "none" }}
-            >
+          {projectsData.projects.map((project) => (
+            <Link href={project.route} key={project.id}>
               <Card
-                image={project.image}
                 title={project.title}
                 description={project.description}
+                image={project.image}
               />
             </Link>
           ))}
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
-};
-
-export default Projects;
+}

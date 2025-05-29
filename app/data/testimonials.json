@@ -1,0 +1,39 @@
+{
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Carlos Silva",
+      "company": "Indústria Têxtil Progresso",
+      "image": "/images/user-circle.svg",
+      "text": "A implementação dos filtros da AirTech transformou completamente o ambiente de trabalho em nossa fábrica. A redução de partículas no ar é notável e nossos funcionários relatam menos problemas respiratórios."
+    },
+    {
+      "id": 2,
+      "name": "Mariana Costa",
+      "company": "Metalúrgica Avançada",
+      "image": "/images/user-circle.svg",
+      "text": "Investir nos sistemas de filtragem da AirTech foi uma das melhores decisões que tomamos. Além de atender às normas regulamentadoras, percebemos um aumento significativo na produtividade da equipe."
+    },
+    {
+      "id": 3,
+      "name": "Roberto Mendes",
+      "company": "Química Industrial BR",
+      "image": "/images/user-circle.svg",
+      "text": "A consultoria em insalubridade da AirTech nos ajudou a identificar pontos críticos que nem imaginávamos. As soluções implementadas reduziram drasticamente os níveis de poluentes no ar."
+    },
+    {
+      "id": 4,
+      "name": "Fernanda Almeida",
+      "company": "Alimentos Naturais SA",
+      "image": "/images/user-circle.svg",
+      "text": "Os filtros industriais da AirTech superaram nossas expectativas. A qualidade do ar melhorou tanto que até nossos processos de produção de alimentos foram beneficiados, com menos contaminação."
+    },
+    {
+      "id": 5,
+      "name": "Paulo Rodrigues",
+      "company": "Farmacêutica Saúde",
+      "image": "/images/user-circle.svg",
+      "text": "O sistema de monitoramento em tempo real nos dá tranquilidade para garantir a qualidade do ar em nossa indústria farmacêutica. O suporte técnico da AirTech é excepcional."
+    }
+  ]
+}
