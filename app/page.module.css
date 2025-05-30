@@ -115,7 +115,7 @@
 /* Hero Section */
 .hero {
   padding: 6rem 0;
-  background: linear-gradient(135deg, var(--gray-light) 0%, #ffffff 100%);
+  background: linear-gradient(135deg, var(--gray-light) 0%, #f5f5f5 100%);
 }
 
 .heroContent {
@@ -193,6 +193,7 @@
   align-items: center;
   text-align: center;
   padding: 2rem;
+  background-color: #f5f5f5;
 }
 
 .cardIcon {
@@ -258,7 +259,7 @@
 }
 
 .testimonialCard {
-  background-color: #fff;
+  background-color: #f5f5f5;
   border-radius: 12px;
   padding: 2rem;
   margin: 1rem;
@@ -301,19 +302,19 @@
 
 .testimonialAuthor h4 {
   margin: 0;
-  color: #000000;
+  color: #404040;
   font-size: 1.2rem;
 }
 
 .testimonialAuthor p {
   margin: 0;
-  color: #000000;
+  color: #404040;
   font-size: 0.9rem;
 }
 
 .testimonialContent {
   font-style: italic;
-  color: #000000;
+  color: #404040;
   line-height: 1.6;
 }
 
@@ -375,7 +376,7 @@
 }
 
 .memberInfo p {
-  color: #000000;
+  color: #404040;
   margin-bottom: 0;
   line-height: 1.6;
 }
@@ -388,7 +389,7 @@
 /* Contato Section */
 .contact {
   padding: 6rem 0;
-  background-color: #004d40;
+  background-color: #262626;
 }
 
 .contact .sectionTitle,
@@ -415,7 +416,7 @@
 
 .contactOptionActive {
   background-color: #ffffff;
-  color: #004d40;
+  color: #262626;
 }
 
 .contactContent {
@@ -430,6 +431,7 @@
 .contactForm {
   display: flex;
   flex-direction: column;
+  background-color: #f5f5f5;
 }
 
 .formGroup {
@@ -446,14 +448,23 @@
 .formGroup textarea {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid var(--gray);
+  border: 1px solid transparent;
   border-radius: 4px;
   font-size: 1rem;
+  background-color: #404040 !important;
+  color: #ffffff !important;
 }
 
-.formGroup textarea {
-  min-height: 150px;
-  resize: vertical;
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: #f2f2f2 !important;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background-color: #404040 !important;
 }
 
 /* Footer */
@@ -638,7 +649,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #f5f5f5;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   display: flex;
@@ -649,7 +660,7 @@
 }
 
 .modalContent {
-  background-color: var(--background);
+  background-color: #f5f5f5;
   border-radius: 12px;
   padding: 2rem;
   width: 100%;
@@ -700,15 +711,21 @@
 
 .modalContent .formGroup input,
 .modalContent .formGroup textarea {
-  background-color: var(--gray-light);
+  background-color: #404040;
   border: 1px solid transparent;
   transition: all 0.3s ease;
+  color: #ffffff;
+}
+
+.modalContent .formGroup input::placeholder,
+.modalContent .formGroup textarea::placeholder {
+  color: #f2f2f2;
 }
 
 .modalContent .formGroup input:focus,
 .modalContent .formGroup textarea:focus {
   border-color: var(--primary);
-  background-color: var(--background);
+  background-color: #404040;
   outline: none;
 }
 
@@ -743,7 +760,7 @@
   display: flex;
   align-items: center;
   padding: 0.75rem 1rem;
-  color: #000000;
+  color: #404040;
   text-decoration: none;
   border-radius: 4px;
   transition: all 0.3s ease;
@@ -759,7 +776,7 @@
 
 .submenuText span {
   font-weight: 500;
-  color: #000000;
+  color: #404040;
 }
 
 .submenuText small {
@@ -917,7 +934,7 @@
 }
 
 .projectInfo p {
-  color: #000000;
+  color: #404040;
   margin-bottom: 1rem;
   line-height: 1.6;
 }
@@ -931,7 +948,7 @@
 }
 
 .projectDetails li {
-  color: #000000;
+  color: #404040;
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
   display: flex;
@@ -1270,7 +1287,7 @@ body.modalOpen {
 }
 
 .galleryInfo p {
-  color: #000000;
+  color: #404040;
   line-height: 1.8;
   margin-bottom: 2rem;
   font-size: 1.1rem;
@@ -1286,7 +1303,7 @@ body.modalOpen {
 }
 
 .galleryDetail {
-  color: #000000;
+  color: #404040;
   font-size: 1.1rem;
 }
 
@@ -1404,7 +1421,7 @@ body.modalOpen {
 
 .whatsappContact p {
   margin-bottom: 1.5rem;
-  color: #000000;
+  color: #404040;
 }
 
 .whatsappContact .button {

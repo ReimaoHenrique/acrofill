@@ -1,0 +1,42 @@
+.contactOptions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.contactOption {
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  border: 2px solid #e0e0e0;
+  background-color: #f5f5f5;
+  color: #666;
+}
+
+.contactOption[data-option="whatsapp"] {
+  background-color: #404040;
+  color: #00d757;
+  opacity: 0.7;
+  border: 2px solid #404040;
+}
+
+.contactOptionActive {
+  opacity: 1;
+}
+
+.contactOptionActive[data-option="whatsapp"] {
+  background-color: #00d757;
+  color: white;
+  opacity: 1;
+  border: 2px solid #00d757;
+}
+
+.contactOptionActive[data-option="email"] {
+  background-color: #333333;
+  color: white;
+  opacity: 1;
+  border: 2px solid #333333;
+}
