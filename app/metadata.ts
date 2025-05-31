@@ -32,3 +32,16 @@ export const metadata: Metadata = {
     follow: true,
   },
 };
+
+export const siteConfig = {
+  name: "AcroFill",
+  description: "Sistema inteligente de filtros de ar para sua empresa",
+  url: "https://acrofill.com",
+  ogImage: "https://acrofill.com/og.jpg",
+  links: {
+    twitter: "https://twitter.com/acrofill",
+    github: "https://github.com/acrofill",
+  },
+};
+
+export type SiteConfig = typeof siteConfig;

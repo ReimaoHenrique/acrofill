@@ -5,6 +5,7 @@ import "./globals.css";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { useState, useEffect, createContext, useContext } from "react";
+import { siteConfig } from "./metadata";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -103,8 +104,22 @@ export default function RootLayout({
   }, []);
 
   return (
-    <html lang="Pt-br">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="pt-BR">
+      <head>
+        <title>{`${siteConfig.name} - ${siteConfig.description}`}</title>
+        <meta name="description" content={siteConfig.description} />
+        <meta property="og:title" content={siteConfig.name} />
+        <meta property="og:description" content={siteConfig.description} />
+        <meta property="og:image" content={siteConfig.ogImage} />
+        <meta property="og:url" content={siteConfig.url} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={siteConfig.name} />
+        <meta name="twitter:description" content={siteConfig.description} />
+        <meta name="twitter:image" content={siteConfig.ogImage} />
+      </head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <ModalContext.Provider value={{ isModalOpen, setIsModalOpen }}>
           <Header
             activeSection={activeSection}

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import styles from "./solutions.module.css";
 import CompareSlider from "@/app/components/CompareSlider/CompareSlider";
+import { SolutionCard } from "@/app/components/SolutionCard/SolutionCard";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -53,81 +54,41 @@ export function Solutions() {
           viewport={{ once: true }}
           className={styles.solutionsGrid}
         >
-          <motion.div
-            variants={itemVariants}
-            whileHover={{ y: -10 }}
-            className={styles.solutionCard}
-          >
-            <h3>Filtros Industriais Avançados</h3>
+          <SolutionCard
+            title="Filtros Industriais Avançados"
+            description="Nossos filtros industriais utilizam tecnologia de ponta para capturar até 99,97% das micropartículas presentes no ar. Desenvolvidos com materiais de alta durabilidade, garantem eficiência contínua mesmo em ambientes com alta concentração de poluentes."
+            hasIcon={true}
+            iconDelay={0.5}
+            buttonText="Conhecer Filtros"
+            buttonLink="/produtos/filtros"
+          />
 
-            <p>
-              Nossos filtros industriais utilizam tecnologia de ponta para
-              capturar até 99,97% das micropartículas presentes no ar.
-              Desenvolvidos com materiais de alta durabilidade, garantem
-              eficiência contínua mesmo em ambientes com alta concentração de
-              poluentes.
-            </p>
-          </motion.div>
+          <SolutionCard
+            title="Conformidade técnica não é luxo: É norma"
+            description="Conforto, eficiência e saúde dependem
+             da conformidade com a NBR 16401. Essa norma define os padrões 
+             mínimos para qualidade do ar e conforto térmico, prevenindo alergias,
+              doenças respiratórias e desconfortos no ambiente de trabalho.
+               Seu sistema de ar-condicionado está adequado a essas exigências? "
+            hasIcon={true}
+            iconDelay={0.5}
+            buttonText="Saiba mais sobre a NBR 16401"
+            buttonLink="/normas/nbr-16401"
+          />
 
-          <motion.div
-            variants={itemVariants}
-            whileHover={{ y: -10 }}
-            className={styles.solutionCard}
-          >
-            <div className={styles.cardIcon}>
-              <motion.div
-                animate={{
-                  scale: [1, 1.1, 1],
-                  rotate: [0, 5, 0, -5, 0],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.5,
-                }}
-                className={styles.iconPlaceholder}
-              ></motion.div>
-            </div>
-            <h3>Sistemas de Monitoramento</h3>
-            <p>
-              Monitore a qualidade do ar em tempo real com nossos sistemas
-              inteligentes. Acompanhe dados de concentração de partículas,
-              umidade e temperatura através de painéis intuitivos, permitindo
-              ajustes imediatos quando necessário para manter o ambiente sempre
-              saudável.
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={itemVariants}
-            whileHover={{ y: -10 }}
-            className={styles.solutionCard}
-          >
-            <div className={styles.cardIcon}>
-              <motion.div
-                animate={{
-                  scale: [1, 1.1, 1],
-                  rotate: [0, 5, 0, -5, 0],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1,
-                }}
-                className={styles.iconPlaceholder}
-              ></motion.div>
-            </div>
-            <h3>Consultoria em Insalubridade</h3>
-            <p>
-              Nossa equipe de especialistas realiza análises completas do
-              ambiente de trabalho, identificando fontes de poluição e
-              desenvolvendo estratégias personalizadas para adequação às normas
-              regulamentadoras, reduzindo riscos à saúde e aumentando a
-              produtividade.
-            </p>
-          </motion.div>
+          <SolutionCard
+            title="Sua empresa está seguindo a NBR 16401?"
+            description="Garanta a conformidade do seu sistema de ar-condicionado e evite problemas futuros, inclusive direitos trabalhistas.
+Agende uma consultoria especializada com nosso time de engenharia e assegure conforto, saúde e segurança para seu ambiente."
+            hasIcon={true}
+            iconDelay={1}
+            buttonText="Agendar Consultoria"
+            onButtonClick={() => {
+              // Aqui você pode adicionar a lógica para abrir um modal de agendamento
+              // ou redirecionar para uma página de contato
+              window.location.href = "/contato";
+            }}
+          />
         </motion.div>
       </div>
     </section>
