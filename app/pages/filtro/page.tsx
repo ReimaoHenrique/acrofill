@@ -4,7 +4,7 @@ import styles from "./page.module.css";
 import CompareSlider from "@/app/components/CompareSlider/CompareSlider";
 import ImageCarousel from "@/app/components/ImageCarousel/ImageCarousel";
 
-export default function ItauPage() {
+export default function DecicloPage() {
   const imagensCarousel = [
     {
       src: "/images/CompareSlider/sem-filtro.jpeg",
@@ -18,7 +18,7 @@ export default function ItauPage() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Projeto Itaú</h1>
+      <h1 className={styles.title}>Projeto Deciclo</h1>
       <div className={styles.content}>
         <ImageCarousel images={imagensCarousel} autoPlayInterval={4000} />
 

@@ -7,14 +7,14 @@ import styles from "./page.module.css";
 import { useModal } from "./layout";
 
 // Importando os componentes
-import { Home as HomeSection } from "./Pages/Home/home";
-import { Solutions } from "./Pages/Home/Solutions/solutions";
-import { Benefits } from "./Pages/Home/Benefits/benefits";
-import { Testimonials } from "./Pages/Home/Testimonials/testimonials";
-import About from "./Pages/Home/About/about";
-import { Contact } from "./Pages/Home/Contact/contact";
+import { Home as HomeSection } from "./pages/Home/home";
+import { Solutions } from "./pages/Home/Solutions/solutions";
+import { Benefits } from "./pages/Home/Benefits/benefits";
+import { Testimonials } from "./pages/Home/Testimonials/testimonials";
+import About from "./pages/Home/About/about";
+import { Contact } from "./pages/Home/Contact/contact";
 import { OrcamentoModal } from "./components/EmailCapturePopup/OrcamentoModal";
-import Projects from "./Pages/Home/Projects/Projects";
+import Projects from "./pages/Home/Projects/Projects";
 
 export default function HomePage() {
   // Estados consolidados
