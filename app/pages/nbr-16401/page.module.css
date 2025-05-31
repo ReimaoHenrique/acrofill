@@ -1,0 +1,183 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  text-align: center;
+}
+
+.title {
+  margin: 70px 0;
+  padding: 2rem;
+  background-color: #004d40;
+  color: white;
+  width: 100%;
+  max-width: 1200px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.title h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.title h2 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  opacity: 0.9;
+}
+
+.content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.carouselSection {
+  width: 100%;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 77, 64, 0.1);
+}
+
+.carouselSection h2 {
+  font-size: 1.8rem;
+  color: #004d40;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.carouselSection p {
+  color: #333;
+  line-height: 1.6;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.normParts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.normPart {
+  background: #f5f5f5;
+  padding: 1.5rem;
+  border-radius: 6px;
+  border-left: 4px solid #004d40;
+  text-align: left;
+}
+
+.normPart h3 {
+  color: #004d40;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.normPart ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.normPart li {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.normPart li:before {
+  content: "•";
+  color: #004d40;
+  position: absolute;
+  left: 0;
+}
+
+.requirements {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.requirement {
+  background: #f5f5f5;
+  padding: 1.5rem;
+  border-radius: 6px;
+  border-left: 4px solid #004d40;
+  text-align: left;
+}
+
+.requirement h3 {
+  color: #004d40;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.requirement ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.requirement li {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  color: #333;
+}
+
+.requirement li:before {
+  content: "•";
+  color: #004d40;
+  position: absolute;
+  left: 0;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 0;
+  }
+
+  .title {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+
+  .title h1 {
+    font-size: 2rem;
+  }
+
+  .title h2 {
+    font-size: 1.2rem;
+  }
+
+  .content {
+    padding: 0 1rem;
+  }
+
+  .carouselSection {
+    padding: 1.5rem;
+  }
+
+  .carouselSection h2 {
+    font-size: 1.5rem;
+  }
+
+  .normParts,
+  .requirements {
+    grid-template-columns: 1fr;
+  }
+}

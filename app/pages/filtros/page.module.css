@@ -1,0 +1,153 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  text-align: center;
+}
+
+.title {
+  margin: 70px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  text-align: center;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 2rem;
+}
+
+.content {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  text-align: center;
+}
+
+.carouselSection {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.carouselSection h2 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  text-align: center;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 2rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.innovationSection {
+  width: 100%;
+  padding: 4rem 0;
+  background-color: var(--background-color);
+  scroll-margin-top: 100px; /* Adiciona espaço para o scroll quando o link é clicado */
+}
+
+.innovationContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.innovationHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.innovationHeader h2 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin: 0;
+}
+
+.innovationDescription {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.innovationGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.innovationCard {
+  background: var(--card-background);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.innovationCard:hover {
+  transform: translateY(-5px);
+}
+
+.innovationCard h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.innovationCard p {
+  color: var(--text-color);
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 0;
+  }
+
+  .title {
+    font-size: 2rem;
+    padding: 0 1rem;
+  }
+
+  .carouselSection h2 {
+    font-size: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .innovationSection {
+    padding: 2rem 0;
+  }
+
+  .innovationContent {
+    padding: 0 1rem;
+  }
+
+  .innovationHeader h2 {
+    font-size: 1.75rem;
+  }
+
+  .innovationDescription {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+  }
+
+  .innovationGrid {
+    grid-template-columns: 1fr;
+  }
+}

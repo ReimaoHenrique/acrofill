@@ -12,8 +12,20 @@ const nextConfig: NextConfig = {
         destination: "/pages/projetos-realizados/Deciclo",
       },
       {
-        source: "/filtro",
-        destination: "/pages/filtro",
+        source: "/filtros",
+        destination: "/pages/filtros",
+      },
+      {
+        source: "/nbr-16401",
+        destination: "/pages/nbr-16401",
+      },
+      {
+        source: "/eficiencia-energetica",
+        destination: "/pages/eficiencia-energetica",
+      },
+      {
+        source: "/manutencao",
+        destination: "/pages/manutencao",
       },
     ];
   },

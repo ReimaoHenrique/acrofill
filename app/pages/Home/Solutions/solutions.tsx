@@ -4,6 +4,17 @@ import { motion } from "framer-motion";
 import styles from "./solutions.module.css";
 import CompareSlider from "@/app/components/CompareSlider/CompareSlider";
 import { SolutionCard } from "@/app/components/SolutionCard/SolutionCard";
+import {
+  FilterIcon,
+  AirIcon,
+  EnergyIcon,
+  QualityIcon,
+  MaintenanceIcon,
+  EfficiencyIcon,
+  InnovationIcon,
+  ComplianceIcon,
+  ConsultingIcon,
+} from "@/app/components/Icons";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -55,39 +66,59 @@ export function Solutions() {
           className={styles.solutionsGrid}
         >
           <SolutionCard
-            title="Filtros Industriais Avançados"
-            description="Nossos filtros industriais utilizam tecnologia de ponta para capturar até 99,97% das micropartículas presentes no ar. Desenvolvidos com materiais de alta durabilidade, garantem eficiência contínua mesmo em ambientes com alta concentração de poluentes."
-            hasIcon={true}
-            iconDelay={0.5}
-            buttonText="Conhecer Filtros"
-            buttonLink="/produtos/filtros"
-          />
-
-          <SolutionCard
             title="Conformidade técnica não é luxo: É norma"
-            description="Conforto, eficiência e saúde dependem
-             da conformidade com a NBR 16401. Essa norma define os padrões 
-             mínimos para qualidade do ar e conforto térmico, prevenindo alergias,
-              doenças respiratórias e desconfortos no ambiente de trabalho.
-               Seu sistema de ar-condicionado está adequado a essas exigências? "
+            description="Conforto, eficiência e saúde dependem da conformidade com a NBR 16401. Essa norma define os padrões mínimos para qualidade do ar e conforto térmico, prevenindo alergias, doenças respiratórias e desconfortos no ambiente de trabalho. Seu sistema de ar-condicionado está adequado a essas exigências?"
             hasIcon={true}
-            iconDelay={0.5}
+            icon={<ComplianceIcon size={32} />}
             buttonText="Saiba mais sobre a NBR 16401"
-            buttonLink="/normas/nbr-16401"
+            buttonLink="/nbr-16401"
           />
 
           <SolutionCard
             title="Sua empresa está seguindo a NBR 16401?"
-            description="Garanta a conformidade do seu sistema de ar-condicionado e evite problemas futuros, inclusive direitos trabalhistas.
-Agende uma consultoria especializada com nosso time de engenharia e assegure conforto, saúde e segurança para seu ambiente."
+            description="Garanta a conformidade do seu sistema de ar-condicionado e evite problemas futuros, inclusive direitos trabalhistas. Agende uma consultoria especializada com nosso time de engenharia e assegure conforto, saúde e segurança para seu ambiente."
             hasIcon={true}
-            iconDelay={1}
+            icon={<ConsultingIcon size={32} />}
             buttonText="Agendar Consultoria"
             onButtonClick={() => {
-              // Aqui você pode adicionar a lógica para abrir um modal de agendamento
-              // ou redirecionar para uma página de contato
-              window.location.href = "/contato";
+              window.location.href = "#contato";
             }}
+          />
+
+          <SolutionCard
+            title="Filtros Industriais Avançados"
+            description="Nossos filtros industriais utilizam tecnologia de ponta para capturar até 99,97% das micropartículas presentes no ar. Desenvolvidos com materiais de alta durabilidade, garantem eficiência contínua mesmo em ambientes com alta concentração de poluentes."
+            hasIcon={true}
+            icon={<FilterIcon size={32} />}
+            buttonText="Conhecer Filtros"
+            buttonLink="/filtros"
+          />
+
+          <SolutionCard
+            title="Eficiência Energética"
+            description="Otimize o consumo de energia com nossas soluções inteligentes. Reduza custos operacionais e contribua para a sustentabilidade ambiental com sistemas de alta performance."
+            hasIcon={true}
+            icon={<EnergyIcon size={32} />}
+            buttonText="Saiba Mais"
+            buttonLink="/eficiencia-energetica"
+          />
+
+          <SolutionCard
+            title="Manutenção Preventiva"
+            description="Programas personalizados de manutenção preventiva para garantir o funcionamento otimizado dos seus equipamentos. Minimize paradas não programadas e maximize a vida útil dos sistemas."
+            hasIcon={true}
+            icon={<MaintenanceIcon size={32} />}
+            buttonText="Plano de Manutenção"
+            buttonLink="/manutencao"
+          />
+
+          <SolutionCard
+            title="Inovação Tecnológica"
+            description="Estamos sempre à frente com as mais recentes tecnologias em climatização e qualidade do ar. Nossas soluções incorporam as últimas inovações do mercado."
+            hasIcon={true}
+            icon={<InnovationIcon size={32} />}
+            buttonText="Inovação"
+            buttonLink="/filtros#Inovação Tecnológica"
           />
         </motion.div>
       </div>

@@ -11,6 +11,7 @@ interface SolutionCardProps {
   buttonText?: string;
   buttonLink?: string;
   onButtonClick?: () => void;
+  icon?: React.ReactNode;
 }
 
 const itemVariants = {
@@ -33,6 +34,7 @@ export function SolutionCard({
   buttonText,
   buttonLink,
   onButtonClick,
+  icon,
 }: SolutionCardProps) {
   const handleButtonClick = () => {
     if (onButtonClick) {
@@ -62,7 +64,9 @@ export function SolutionCard({
               delay: iconDelay,
             }}
             className={styles.iconPlaceholder}
-          ></motion.div>
+          >
+            {icon}
+          </motion.div>
         </div>
       )}
       <h3>{title}</h3>
