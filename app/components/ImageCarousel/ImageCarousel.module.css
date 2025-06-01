@@ -1,14 +1,11 @@
 .carouselContainer {
-  width: 100vw;
+  width: 100%;
   position: relative;
   overflow: hidden;
   background-color: var(--gray-light);
-  margin: 0;
+  margin: 1rem 0;
   padding: 0;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  border-radius: 8px;
 }
 
 .carouselWrapper {
@@ -89,9 +86,8 @@
   background-color: #f0f0f0;
   overflow-x: auto;
   gap: 10px;
-  max-width: 1200px;
-  margin: 0 auto;
   width: 100%;
+  border-radius: 0 0 8px 8px;
 }
 
 .thumbnail {
