@@ -6,11 +6,8 @@ import CompareSlider from "@/app/components/CompareSlider/CompareSlider";
 import { SolutionCard } from "@/app/components/SolutionCard/SolutionCard";
 import {
   FilterIcon,
-  AirIcon,
   EnergyIcon,
-  QualityIcon,
   MaintenanceIcon,
-  EfficiencyIcon,
   InnovationIcon,
   ComplianceIcon,
   ConsultingIcon,
@@ -22,18 +19,6 @@ const containerVariants = {
     opacity: 1,
     transition: {
       staggerChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 100,
     },
   },
 };
@@ -55,7 +40,6 @@ export function Solutions() {
           imagemSemFiltro="/images/CompareSlider/sem-filtro.jpeg"
           imagemComFiltro="/images//CompareSlider/com-filtro.jpeg"
           posicaoInicial={40}
-          altura="500px"
           largura="750px"
         />
         <motion.div

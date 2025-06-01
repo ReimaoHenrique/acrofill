@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, MotionValue } from "framer-motion";
 import Image from "next/image";
 import styles from "./home.module.css";
 
@@ -18,8 +18,8 @@ const Button = ({ children, onClick }: ButtonProps) => {
 };
 
 interface HomeProps {
-  heroY: any;
-  heroOpacity: any;
+  heroY: MotionValue<number>;
+  heroOpacity: MotionValue<number>;
 }
 
 export function Home({ heroY, heroOpacity }: HomeProps) {

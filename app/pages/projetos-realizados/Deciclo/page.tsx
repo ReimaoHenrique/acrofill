@@ -28,7 +28,6 @@ export default function DecicloPage() {
           titulo="Comparação com e sem Filtro de Ar"
           descricao="Deslize para ver a diferença na qualidade do ar após a instalação do nosso filtro"
           posicaoInicial={40}
-          altura="500px"
           largura="100%"
         />
 

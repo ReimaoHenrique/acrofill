@@ -1,7 +1,7 @@
 "use client";
 
 import { useScroll, useTransform } from "framer-motion";
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useRef } from "react";
 import { useScrollPosition } from "./hooks/useScrollPosition";
 import styles from "./page.module.css";
 import { useModal } from "./layout";
@@ -17,16 +17,10 @@ import { OrcamentoModal } from "./components/EmailCapturePopup/OrcamentoModal";
 import Projects from "./pages/Home/Projects/Projects";
 
 export default function HomePage() {
-  // Estados consolidados
-  const [uiState, setUiState] = useState({
-    showSubmenu: false,
-    showWhatsappTooltip: false,
-  });
-
   const { isModalOpen, setIsModalOpen } = useModal();
 
   // Hook personalizado para navegação
-  const { activeSection, scrollY, scrollProgress } = useScrollPosition({
+  const { scrollProgress } = useScrollPosition({
     offset: 150,
     includeProgress: true,
   });
@@ -56,14 +50,6 @@ export default function HomePage() {
       opacity: useTransform(benefitsScrollY, [0, 0.3], [0, 1]),
     },
   };
-
-  // Handlers simplificados
-  const updateUiState = useCallback(
-    (key: keyof typeof uiState, value: boolean) => {
-      setUiState((prev) => ({ ...prev, [key]: value }));
-    },
-    []
-  );
 
   return (
     <div className={styles.page}>

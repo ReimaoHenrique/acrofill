@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef, ReactNode, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import styles from "./ImageCarousel.module.css";
 
 interface ImageCarouselProps {
@@ -66,11 +67,8 @@ export default function ImageCarousel({
     <div className={styles.carouselContainer} ref={carouselRef}>
       <div className={styles.carouselWrapper}>
         <AnimatePresence initial={false} custom={direction}>
-          <motion.img
+          <motion.div
             key={page}
-            src={images[imageIndex].src}
-            alt={images[imageIndex].alt}
-            className={styles.carouselImage}
             custom={direction}
             variants={variants}
             initial="enter"
@@ -92,17 +90,24 @@ export default function ImageCarousel({
                 paginate(-1);
               }
             }}
-          />
+            className={styles.carouselImageContainer}
+          >
+            <Image
+              src={images[imageIndex].src}
+              alt={images[imageIndex].alt}
+              className={styles.carouselImage}
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </motion.div>
         </AnimatePresence>
       </div>
 
       <div className={styles.thumbnailGallery}>
         {images.map((image, index) => (
-          <img
+          <div
             key={index}
-            src={image.src}
-            alt={image.alt}
-            className={`${styles.thumbnail} ${
+            className={`${styles.thumbnailContainer} ${
               imageIndex === index ? styles.activeThumbnail : ""
             }`}
             onClick={() => {
@@ -110,7 +115,16 @@ export default function ImageCarousel({
               setPage([index, newDirection]);
               setIsAutoPlaying(false);
             }}
-          />
+          >
+            <Image
+              src={image.src}
+              alt={image.alt}
+              className={styles.thumbnail}
+              width={80}
+              height={60}
+              style={{ objectFit: "cover" }}
+            />
+          </div>
         ))}
       </div>
     </div>

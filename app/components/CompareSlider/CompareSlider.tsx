@@ -12,7 +12,6 @@ interface CompareSliderProps {
   titulo?: string;
   descricao?: string;
   posicaoInicial?: number;
-  altura?: string;
   largura?: string;
 }
 
@@ -22,7 +21,6 @@ export default function CompareSlider({
   titulo,
   descricao,
   posicaoInicial = 50,
-  altura = "auto",
   largura = "100%",
 }: CompareSliderProps) {
   return (

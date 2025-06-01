@@ -1,6 +1,7 @@
 // components/Card.tsx
 import React, { ReactNode } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import styles from "./card.module.css";
 
 interface CardProps {
@@ -25,7 +26,16 @@ export default function Card({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <img src={image} alt={title} className={styles.cardImage} />
+      <div className={styles.cardImageContainer}>
+        <Image
+          src={image}
+          alt={title}
+          className={styles.cardImage}
+          width={300}
+          height={200}
+          style={{ objectFit: "cover" }}
+        />
+      </div>
       <div className={styles.cardContent}>
         <h2>{title}</h2>
         <p>{description}</p>
