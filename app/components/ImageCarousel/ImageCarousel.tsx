@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, ReactNode } from "react";
+import { useState, useEffect, useRef, ReactNode, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./ImageCarousel.module.css";
 
@@ -10,8 +10,6 @@ interface ImageCarouselProps {
     alt: string;
   }[];
   autoPlayInterval?: number;
-  prevButtonContent?: ReactNode;
-  nextButtonContent?: ReactNode;
 }
 
 const variants = {
@@ -39,14 +37,20 @@ const swipePower = (offset: number, velocity: number) => {
 export default function ImageCarousel({
   images,
   autoPlayInterval = 5000,
-  prevButtonContent = "‹", // Default content
-  nextButtonContent = "›", // Default content
 }: ImageCarouselProps) {
   const [[page, direction], setPage] = useState([0, 0]);
   const imageIndex = page % images.length;
 
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const carouselRef = useRef<HTMLDivElement>(null);
+
+  const paginate = useCallback(
+    (newDirection: number) => {
+      setPage([page + newDirection, newDirection]);
+      setIsAutoPlaying(false);
+    },
+    [page]
+  );
 
   useEffect(() => {
     if (!isAutoPlaying) return;
@@ -56,20 +60,7 @@ export default function ImageCarousel({
     }, autoPlayInterval);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, autoPlayInterval, images.length]);
-
-  const paginate = (newDirection: number) => {
-    setPage([page + newDirection, newDirection]);
-    setIsAutoPlaying(false);
-  };
-
-  const handlePrevious = () => {
-    paginate(-1);
-  };
-
-  const handleNext = () => {
-    paginate(1);
-  };
+  }, [isAutoPlaying, autoPlayInterval, paginate]);
 
   return (
     <div className={styles.carouselContainer} ref={carouselRef}>
@@ -103,53 +94,8 @@ export default function ImageCarousel({
             }}
           />
         </AnimatePresence>
-
-        {/* Remove the previous and next buttons */}
-        {/*
-        <button
-          className={`${styles.carouselButton} ${styles.prevButton}`}
-          onClick={(e) => {
-            e.stopPropagation();
-            handlePrevious();
-          }}
-          aria-label="Imagem anterior"
-        >
-          {prevButtonContent}
-        </button>
-        <button
-          className={`${styles.carouselButton} ${styles.nextButton}`}
-          onClick={(e) => {
-            e.stopPropagation();
-            handleNext();
-          }}
-          aria-label="Próxima imagem"
-        >
-          {nextButtonContent}
-        </button>
-        */}
-
-        {/* Indicators (optional, can keep or remove) */}
-        {/*
-        <div className={styles.indicators}>
-          {images.map((_, index) => (
-            <button
-              key={index}
-              className={`${styles.indicator} ${
-                imageIndex === index ? styles.active : ""
-              }`}
-              onClick={() => {
-                const newDirection = index > imageIndex ? 1 : -1;
-                setPage([index, newDirection]);
-                setIsAutoPlaying(false);
-              }}
-              aria-label={`Ir para imagem ${index + 1}`}
-            />
-          ))}
-        </div>
-        */}
       </div>
 
-      {/* Thumbnail Gallery */}
       <div className={styles.thumbnailGallery}>
         {images.map((image, index) => (
           <img

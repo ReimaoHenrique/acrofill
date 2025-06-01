@@ -126,9 +126,9 @@ export default function FiltrosPage() {
             </li>
           </ul>
           <p>
-            "Na Metalúrgica XYZ, nossos filtros aumentaram a eficiência da
+            &ldquo;Na Metalúrgica XYZ, nossos filtros aumentaram a eficiência da
             ventilação em 34% e reduziram a necessidade de troca mensal para um
-            ciclo de 6 meses."
+            ciclo de 6 meses.&rdquo;
           </p>
           <ImageCarousel images={FilterImage} autoPlayInterval={6000} />
         </SolutionCard>
