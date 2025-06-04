@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import styles from "./Header.module.css";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 interface NavLinksProps {
   activeSection: string;
@@ -18,6 +20,9 @@ export function NavLinks({
   handleMobileMenuClick,
   isMobileMenuOpen,
 }: NavLinksProps) {
+  const pathname = usePathname();
+  const router = useRouter();
+
   // Array com todos os itens do menu de navegação
   const navItems = [
     { id: "inicio", label: "Início" },

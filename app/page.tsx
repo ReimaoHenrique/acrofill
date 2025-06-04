@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useScrollPosition } from "./hooks/useScrollPosition";
 import styles from "./page.module.css";
 import { useModal } from "./components/EmailCapturePopup/ModalContext";
@@ -14,8 +14,16 @@ import { Testimonials as TestimonialsSection } from "./pages/Home/Testimonials/t
 import { Contact as ContactSection } from "./pages/Home/Contact/contact";
 
 export default function Home() {
-  const { scrollY } = useScrollPosition();
-  const { setIsModalOpen } = useModal();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     // Verificar se há um hash na URL ao carregar a página

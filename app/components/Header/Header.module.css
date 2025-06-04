@@ -3,18 +3,17 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: rgba(255, 255, 255, 0.98);
   min-height: 4rem;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  padding: 2rem 0;
+  padding: 2rem 0rem 0.5rem 0rem;
   transition: all 0.3s ease;
 }
 
 .header.scrolled {
-  padding: 3rem 0rem 2rem 0rem;
+  padding: 1rem 0rem 1rem 0rem;
   background-color: rgba(255, 255, 255, 0.95);
 }
 
@@ -210,6 +209,10 @@
 
 /* Media Queries */
 @media (max-width: 768px) {
+  .header.scrolled {
+    padding: 2rem 0rem 2rem 0rem;
+    background-color: rgba(48, 43, 43, 0.733);
+  }
   .nav {
     justify-content: space-between;
   }
