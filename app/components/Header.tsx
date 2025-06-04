@@ -1,12 +1,11 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { useModal } from "../components/EmailCapturePopup/ModalContext";
 import styles from "./Header.module.css";
-import { Logo } from "./Logo";
-import { MobileMenu } from "./MobileMenu";
-import { NavLinks } from "./NavLinks";
+import { Logo } from "./Header/Logo";
+import { MobileMenu } from "./Header/MobileMenu";
+import { NavLinks } from "./Header/NavLinks";
 import { motion } from "framer-motion";
 
 interface HeaderProps {

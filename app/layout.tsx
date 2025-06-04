@@ -8,7 +8,6 @@ import { useState, useEffect } from "react";
 import { siteConfig } from "./metadata";
 import { EmailCapturePopup } from "./components/EmailCapturePopup/EmailCapturePopup";
 import { ModalProvider } from "./components/EmailCapturePopup/ModalContext";
-import { useModal } from "./components/EmailCapturePopup/ModalContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +19,6 @@ export default function RootLayout({
   const [activeSection, setActiveSection] = useState("inicio");
   const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { isModalOpen, setIsModalOpen } = useModal();
 
   const handleMobileMenuClick = () => {
     setIsMobileMenuOpen(false);

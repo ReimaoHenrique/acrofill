@@ -3,10 +3,22 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import styles from "./orcamento.module.css";
+import { ContactCard } from "../components/ContactCard/ContactCard";
 
 export default function OrcamentoPage() {
   return (
     <main className={styles.main}>
+      <Image
+        src="/images/pulmao-verde.jpg"
+        alt="Pulmão Verde"
+        width={1920}
+        height={1080}
+        priority
+        style={{
+          width: "100%",
+          height: "auto",
+        }}
+      />
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -16,96 +28,11 @@ export default function OrcamentoPage() {
         >
           <h1>Solicitar Orçamento</h1>
           <p className={styles.description}>
-            Escolha a melhor forma de entrar em contato conosco
+            Desenvolvemos sistemas sob medida com foco em performance, segurança
+            e automação. Entre em contato pelo WhatsApp e solicite seu orçamento
+            sem compromisso.
           </p>
-
-          <div className={styles.contactOptions}>
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className={styles.contactCard}
-            >
-              <div className={styles.cardHeader}>
-                <Image
-                  src="/images/whatsapp.svg"
-                  alt="WhatsApp"
-                  width={32}
-                  height={32}
-                />
-                <h2>WhatsApp</h2>
-              </div>
-              <p>
-                Entre em contato diretamente pelo WhatsApp para um atendimento
-                mais rápido
-              </p>
-              <a
-                href="https://wa.me/5511999999999"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.whatsappButton}
-              >
-                Iniciar Conversa
-              </a>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className={styles.contactCard}
-            >
-              <div className={styles.cardHeader}>
-                <span className={styles.emailIcon}>✉️</span>
-                <h2>Email</h2>
-              </div>
-              <p>Preencha o formulário abaixo e entraremos em contato</p>
-              <form className={styles.form}>
-                <div className={styles.formGroup}>
-                  <label htmlFor="name">Nome *</label>
-                  <input
-                    type="text"
-                    id="name"
-                    placeholder="Seu nome completo"
-                    required
-                  />
-                </div>
-                <div className={styles.formGroup}>
-                  <label htmlFor="email">Email *</label>
-                  <input
-                    type="email"
-                    id="email"
-                    placeholder="seu.email@empresa.com.br"
-                    required
-                  />
-                </div>
-                <div className={styles.formGroup}>
-                  <label htmlFor="phone">Telefone</label>
-                  <input type="tel" id="phone" placeholder="(00) 00000-0000" />
-                </div>
-                <div className={styles.formGroup}>
-                  <label htmlFor="company">Empresa</label>
-                  <input
-                    type="text"
-                    id="company"
-                    placeholder="Nome da sua empresa"
-                  />
-                </div>
-                <div className={styles.formGroup}>
-                  <label htmlFor="message">Mensagem *</label>
-                  <textarea
-                    id="message"
-                    placeholder="Descreva sua necessidade de filtragem de ar"
-                    required
-                  ></textarea>
-                </div>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  type="submit"
-                  className={styles.submitButton}
-                >
-                  Enviar Solicitação
-                </motion.button>
-              </form>
-            </motion.div>
-          </div>
+          <ContactCard />
         </motion.div>
       </div>
     </main>

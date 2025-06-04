@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useScrollPosition } from "./hooks/useScrollPosition";
+import { useEffect } from "react";
 import styles from "./page.module.css";
-import { useModal } from "./components/EmailCapturePopup/ModalContext";
+import { useScroll, useTransform } from "framer-motion";
 
 // Importando os componentes
 import { Home as HomeSection } from "./pages/Home/home";
@@ -14,16 +13,15 @@ import { Testimonials as TestimonialsSection } from "./pages/Home/Testimonials/t
 import { Contact as ContactSection } from "./pages/Home/Contact/contact";
 
 export default function Home() {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const { scrollY } = useScroll();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+  // Valores de animação para o HomeSection
+  const heroY = useTransform(scrollY, [0, 300], [0, -100]);
+  const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // Valores de animação para o BenefitsSection
+  const benefitsScale = useTransform(scrollY, [800, 1200], [0.8, 1]);
+  const benefitsOpacity = useTransform(scrollY, [800, 1200], [0, 1]);
 
   useEffect(() => {
     // Verificar se há um hash na URL ao carregar a página
@@ -41,9 +39,12 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <HomeSection />
+      <HomeSection heroY={heroY} heroOpacity={heroOpacity} />
       <SolutionsSection />
-      <BenefitsSection />
+      <BenefitsSection
+        benefitsScale={benefitsScale}
+        benefitsOpacity={benefitsOpacity}
+      />
       <About />
       <TestimonialsSection />
       <ContactSection />
