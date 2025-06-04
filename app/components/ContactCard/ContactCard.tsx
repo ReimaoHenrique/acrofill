@@ -26,6 +26,7 @@ export function ContactCard() {
   const [contactOption, setContactOption] = useState<"email" | "whatsapp">(
     "whatsapp"
   );
+  const [showEmailMessage, setShowEmailMessage] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -102,6 +103,17 @@ export function ContactCard() {
       isWhatsapp: false,
       allowWhatsappContact: false,
     });
+  };
+
+  const handleContactOptionChange = (option: "email" | "whatsapp") => {
+    if (option === "email") {
+      setShowEmailMessage(true);
+      setTimeout(() => {
+        setShowEmailMessage(false);
+      }, 1000);
+      return;
+    }
+    setContactOption(option);
   };
 
   useEffect(() => {
@@ -290,9 +302,15 @@ export function ContactCard() {
         }
       />
 
+      {showEmailMessage && (
+        <div className={styles.emailMessage}>
+          <span>Função temporariamente indisponível</span>
+        </div>
+      )}
+
       <ContactButtons
         contactOption={contactOption}
-        onOptionChange={setContactOption}
+        onOptionChange={handleContactOptionChange}
       />
 
       <motion.div
