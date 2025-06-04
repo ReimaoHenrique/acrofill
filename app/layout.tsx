@@ -1,45 +1,26 @@
 "use client";
 
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import { Header } from "./components/Header";
+import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer";
-import { useState, useEffect, createContext, useContext } from "react";
+import { useState, useEffect } from "react";
 import { siteConfig } from "./metadata";
+import { EmailCapturePopup } from "./components/EmailCapturePopup/EmailCapturePopup";
+import { ModalProvider } from "./components/EmailCapturePopup/ModalContext";
+import { useModal } from "./components/EmailCapturePopup/ModalContext";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-// Criar contexto para o modal
-interface ModalContextType {
-  isModalOpen: boolean;
-  setIsModalOpen: (show: boolean) => void;
-}
-
-const ModalContext = createContext<ModalContextType>({
-  isModalOpen: false,
-  setIsModalOpen: () => {},
-});
-
-export const useModal = () => useContext(ModalContext);
+const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   const [activeSection, setActiveSection] = useState("inicio");
   const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
-  const [showSubmenu, setShowSubmenu] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { isModalOpen, setIsModalOpen } = useModal();
 
   const handleMobileMenuClick = () => {
     setIsMobileMenuOpen(false);
@@ -117,22 +98,19 @@ export default function RootLayout({
         <meta name="twitter:description" content={siteConfig.description} />
         <meta name="twitter:image" content={siteConfig.ogImage} />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ModalContext.Provider value={{ isModalOpen, setIsModalOpen }}>
+      <body className={inter.className}>
+        <ModalProvider>
           <Header
             activeSection={activeSection}
             isHeaderScrolled={isHeaderScrolled}
             handleMobileMenuClick={handleMobileMenuClick}
-            setShowSubmenu={setShowSubmenu}
-            showSubmenu={showSubmenu}
             isMobileMenuOpen={isMobileMenuOpen}
             setIsMobileMenuOpen={setIsMobileMenuOpen}
           />
           {children}
           <Footer />
-        </ModalContext.Provider>
+          <EmailCapturePopup />
+        </ModalProvider>
       </body>
     </html>
   );

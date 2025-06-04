@@ -24,6 +24,7 @@
   color: #004d40;
   margin-bottom: 20px;
   line-height: 1.2;
+  margin: 5rem 0rem 2rem 0rem;
 }
 
 .homeText p {
@@ -42,6 +43,7 @@
   flex: 1;
   position: relative;
   min-width: 0;
+  margin-top: 5rem;
 }
 
 .homeImageContainer {
@@ -86,7 +88,6 @@
     text-align: center;
     gap: 30px;
   }
-
   .homeText {
     width: 100%;
   }

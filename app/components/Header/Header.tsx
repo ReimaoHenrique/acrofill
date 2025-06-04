@@ -2,7 +2,6 @@
 
 import { useRef, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { useModal } from "../components/EmailCapturePopup/ModalContext";
 import styles from "./Header.module.css";
 import { Logo } from "./Logo";
 import { MobileMenu } from "./MobileMenu";
@@ -93,19 +92,21 @@ export function Header({
             isMobileMenuOpen={isMobileMenuOpen}
           />
 
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            href="/orcamento"
-            className={styles.orcamentoButton}
-            onClick={handleMobileMenuClick}
-          >
-            Solicitar Orçamento
-          </motion.a>
+          <div className={styles.rightSection}>
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              href="/orcamento"
+              className={styles.orcamentoButton}
+              onClick={handleMobileMenuClick}
+            >
+              Solicitar Orçamento
+            </motion.a>
 
-          <MobileMenu
-            isMobileMenuOpen={isMobileMenuOpen}
-            setIsMobileMenuOpen={setIsMobileMenuOpen}
-          />
+            <MobileMenu
+              isMobileMenuOpen={isMobileMenuOpen}
+              setIsMobileMenuOpen={setIsMobileMenuOpen}
+            />
+          </div>
         </nav>
       </div>
     </header>
